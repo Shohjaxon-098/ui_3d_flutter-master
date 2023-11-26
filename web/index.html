@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <base href="/ui_3d_flutter/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <title>BabakCode 3D UI</title>
+  <meta name="description" content="Flutter 3D beautiful ui using O3D dependency.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="ui_3d_flutter">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <link rel="manifest" href="manifest.json">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js" defer></script>
+
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    var serviceWorkerVersion = null;
+  </script>
+  <!-- This script adds the flutter initialization JS code -->
+  <script src="flutter.js" defer></script>
+</head>
+<body>
+  <div id="loading"></div>
+  <script>
+    window.addEventListener('load', function(ev) {
+      var loading = document.querySelector('#loading');
+      loading.textContent = "Loading entrypoint...";
+
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function(engineInitializer) {
+            loading.textContent = "Initializing engine...";
+          engineInitializer.initializeEngine().then(function(appRunner) {
+            loading.textContent = "Running app...";
+            appRunner.runApp();
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
